@@ -3,274 +3,320 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nama Lengkap Kamu – Profil</title>
-<meta name="description" content="Profil pribadi Nama Lengkap Kamu">
-<meta property="og:title" content="Nama Lengkap Kamu">
-<meta property="og:description" content="Profil pribadi dan kontak.">
+<meta name="theme-color" content="#02050c">
+<title>Nafseo – Web Creative</title>
+<meta name="description" content="Profil Nafseo (Muhammad Nafis) – foto, video, dan desain grafis.">
+<meta property="og:title" content="Nafseo – Web Creative">
+<meta property="og:description" content="Portofolio foto, video, dan desain grafis.">
 <meta property="og:image" content="foto.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #e6edf7; --card: #ffffff; --ink: #1b2640; --muted: #5c6a86;
-    --line: #d5deec; --accent: #f0b429; --accent-ink: #1b2640;
-    --side: #1b2640; --side-ink: #eef2fb; --side-muted: #9aa8c7;
-    color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0b1120; --card: #18223b; --ink: #eef2fb; --muted: #9aa8c7;
-      --line: #2a3657; --side: #121a2f;
-      color-scheme: dark;
-    }
+    --accent: #7fb4e6;
+    --text: #e8eef6; --soft: #aebccd; --muted: #8592a5; --dim: #5f6c80;
+    --card: rgba(255, 255, 255, .035); --line: rgba(255, 255, 255, .09);
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --pad: clamp(20px, 6vw, 96px);
+    color-scheme: dark;
   }
   * { box-sizing: border-box; margin: 0; }
-  body {
-    min-height: 100vh; background: var(--bg); color: var(--ink);
-    font: 400 1rem/1.6 "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-    display: grid; place-items: center; padding: 40px 24px;
-  }
-  .page {
-    width: 100%; max-width: 1080px; min-height: 600px;
-    display: grid; grid-template-columns: 340px 1fr;
-    background: var(--card); border-radius: 28px; overflow: hidden;
-    box-shadow: 0 20px 60px rgba(27,38,64,.18);
-  }
-  /* Kolom kiri */
-  aside {
-    background: var(--side); color: var(--side-ink);
-    padding: 96px 32px 48px; display: flex; flex-direction: column; align-items: center; text-align: center;
-    position: relative; overflow: hidden;
-    border-bottom: 12px solid var(--accent);
-  }
-  /* Foto background profil: sisi kiri, kanan, dan bawah memudar */
-  .cover {
-    position: absolute; inset: 0 0 auto 0; height: 320px;
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; scroll-snap-type: y proximity; }
+  body { background: #02050c; color: var(--text); font: 300 1rem/1.7 var(--sans); overflow-x: hidden; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* Latar gradasi biru gelap ke hitam + motif batik Minang yang sangat tipis */
+  .bg { position: fixed; inset: 0; z-index: -2; background: linear-gradient(170deg, #01030a 0%, #04101f 40%, #0a2240 100%); }
+  .batik { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .07;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%20120'%20fill='none'%20stroke='%237fb4e6'%20stroke-width='1'%3E%0A%3Cpath%20d='M60%203%20L117%2060%20L60%20117%20L3%2060Z'/%3E%0A%3Cpath%20d='M60%2020%20L100%2060%20L60%20100%20L20%2060Z'/%3E%0A%3Cpath%20d='M60%2060%20a3%203%200%200%201%206%200%20a6%206%200%200%201%20-12%200%20a9%209%200%200%201%2018%200%20a12%2012%200%200%201%20-24%200'/%3E%0A%3Cpath%20d='M60%203%20v17%20M117%2060%20h-17%20M60%20117%20v-17%20M3%2060%20h17'/%3E%0A%3Cpath%20d='M0%200%20L10%200%20L0%2010Z%20M120%200%20L110%200%20L120%2010Z%20M0%20120%20L10%20120%20L0%20110Z%20M120%20120%20L110%20120%20L120%20110Z'/%3E%0A%3C/svg%3E"); background-size: 120px 120px;
+    -webkit-mask-image: linear-gradient(180deg, #000, rgba(0,0,0,.4));
+            mask-image: linear-gradient(180deg, #000, rgba(0,0,0,.4)); }
+
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* Navigasi */
+  .top { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 14px var(--pad); background: rgba(2, 5, 12, .72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line); }
+  .logo { font: 500 1.05rem/1 var(--sans); letter-spacing: .04em; color: var(--text); text-decoration: none; }
+  .top nav { display: flex; gap: clamp(14px, 2.6vw, 32px); }
+  .top nav a { font: 400 .75rem/1 var(--sans); letter-spacing: .1em; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .top nav a:hover { color: var(--text); }
+
+  .eyebrow { font: 400 .72rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+
+  /* Hero */
+  .hero { position: relative; isolation: isolate; scroll-snap-align: start;
+    min-height: calc(100vh - 50px); min-height: calc(100svh - 50px);
+    display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 40px; padding: 56px var(--pad) 0; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .4;
     background: url("bg.jpg") center / cover no-repeat;
-  }
-  .cover::after {
-    content: ""; position: absolute; inset: 0;
-    background:
-      linear-gradient(to right, var(--side) 0%, transparent 30%, transparent 70%, var(--side) 100%),
-      linear-gradient(to bottom, transparent 30%, var(--side) 100%);
-  }
-  aside > :not(.cover) { position: relative; z-index: 1; }
-  .photo {
-    width: 200px; height: 200px; border-radius: 50%;
-    border: 6px solid var(--accent); background: var(--accent); color: var(--accent-ink);
-    display: grid; place-items: center; overflow: hidden;
-    font: 800 64px "Bricolage Grotesque", sans-serif;
-  }
-  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  h1 { font: 800 2rem/1.15 "Bricolage Grotesque", sans-serif; margin-top: 24px; }
-  .tagline { color: var(--side-muted); margin-top: 6px; }
-  .actions { margin-top: auto; padding-top: 32px; width: 100%; display: grid; gap: 10px; }
-  button, .btn {
-    font: 600 1rem "Instrument Sans", system-ui, sans-serif;
-    padding: 12px 18px; border-radius: 12px; border: 2px solid var(--side-ink);
-    background: transparent; color: var(--side-ink); cursor: pointer;
-    text-decoration: none; text-align: center; display: block;
-  }
-  .primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-  button:hover, .btn:hover { filter: brightness(1.1); }
-  button:focus-visible, .btn:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-  #status { margin-top: 12px; min-height: 1.5em; font-size: .9rem; color: var(--side-muted); }
-  /* Kolom kanan */
-  main { padding: 48px 56px; }
-  h2 { font: 800 1.3rem "Bricolage Grotesque", sans-serif; margin-bottom: 12px; }
-  section + section { margin-top: 36px; }
-  .about { max-width: 60ch; color: var(--muted); }
-  dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
-  .row { padding: 14px 0; border-top: 1px solid var(--line); }
-  dt { font-size: .85rem; color: var(--muted); }
-  dd { font-weight: 600; word-break: break-word; }
-  dd a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 2px; }
-  /* Portofolio */
-  .wrap { width: 100%; max-width: 1080px; display: grid; gap: 32px; }
-  .folio { background: var(--card); border-radius: 28px; padding: 40px 48px; box-shadow: 0 20px 60px rgba(27,38,64,.18); }
-  .folio-title { text-align: center; text-transform: uppercase; letter-spacing: .25em; padding-left: .25em; font: 800 clamp(1.6rem, 5vw, 2.4rem)/1.1 "Bricolage Grotesque", sans-serif; letter-spacing: .25em; margin-bottom: 28px; }
-  .folio-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
-  .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tab { border: 2px solid var(--line); color: var(--ink); background: transparent; padding: 10px 18px; border-radius: 999px; }
-  .tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+    -webkit-mask-image: radial-gradient(ellipse at 65% 45%, #000 10%, transparent 70%);
+            mask-image: radial-gradient(ellipse at 65% 45%, #000 10%, transparent 70%); }
+  .hero-text { align-self: center; padding-bottom: 56px; }
+  h1 { font: 300 clamp(3.8rem, 10vw, 8rem)/1 var(--sans); letter-spacing: -.04em; margin: 20px 0 12px; }
+  .fullname { font: 400 1rem/1.4 var(--sans); letter-spacing: .06em; color: var(--soft); }
+  .lead { margin-top: 20px; max-width: 44ch; color: var(--muted); }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .btn { font: 400 .85rem/1 var(--sans); letter-spacing: .04em; padding: 14px 24px; border-radius: 999px; cursor: pointer;
+    text-decoration: none; border: 1px solid var(--line); background: transparent; color: var(--text); display: inline-block; }
+  .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #051224; font-weight: 500; }
+  .btn.primary:hover { filter: brightness(1.08); }
+  #status { margin-top: 10px; min-height: 1.4em; font-size: .78rem; color: var(--muted); }
+
+  /* Foto profil tanpa bingkai, bagian bawah memudar */
+  .portrait { justify-self: center; align-self: end; width: min(440px, 82vw); aspect-ratio: 3 / 4; overflow: hidden; border-radius: 20px 20px 0 0;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 55%, transparent 100%); }
+  .portrait .inner { width: 100%; height: 100%; display: grid; place-items: center;
+    background: linear-gradient(160deg, #0d2b4d, #02050c); color: var(--accent); font: 300 5rem/1 var(--sans); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* Bagian umum */
+  .section { padding: clamp(64px, 9vw, 112px) var(--pad); }
+  .title { font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--sans); letter-spacing: -.02em; margin-top: 14px; }
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .about p { margin-top: 20px; color: var(--soft); max-width: 52ch; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 6px 28px; }
+  .row { padding: 16px 0; border-top: 1px solid var(--line); }
+  .row:first-child { border-top: 0; }
+  dt { font: 400 .68rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  dd { font-weight: 400; word-break: break-word; }
+
+  .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 32px; }
+  .card { display: block; text-decoration: none; color: var(--text); padding: 22px 24px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); }
+  .card:hover { border-color: var(--accent); }
+  .card small { display: block; font: 400 .68rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .card span { font-weight: 400; word-break: break-word; }
+
+  /* Portofolio: tiap kategori satu slide layar penuh */
+  .folio-main { text-align: center; padding: clamp(56px, 8vw, 96px) var(--pad) 0; }
+  .folio-main h2 { font: 400 clamp(1.7rem, 6vw, 4rem)/1.1 var(--sans); text-transform: uppercase; letter-spacing: .26em; padding-left: .26em; margin-top: 16px; }
+  .slide { scroll-snap-align: start; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+    padding: 72px var(--pad); border-bottom: 1px solid var(--line); }
+  .slide:last-of-type { border-bottom: 0; }
+  .slide-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 32px; }
+  .slide-head h3 { font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.1 var(--sans); letter-spacing: -.02em; margin-top: 12px; }
+  .slide-head p { margin-top: 8px; font-size: .86rem; color: var(--muted); }
   .nav { display: flex; gap: 8px; }
-  .nav button { width: 44px; height: 44px; padding: 0; border-radius: 50%; border: 2px solid var(--line); color: var(--ink); font-size: 1.2rem; }
-  .track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 12px; }
-  .track[hidden] { display: none; }
-  .item { flex: 0 0 min(320px, 80%); scroll-snap-align: start; margin: 0; }
-  .media { aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--line); }
+  .nav button { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--text); font-size: 1rem; cursor: pointer; }
+  .nav button:hover { border-color: var(--accent); }
+  .track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 16px;
+    scrollbar-width: thin; scrollbar-color: rgba(127, 180, 230, .3) transparent; }
+  .item { flex: 0 0 var(--w); scroll-snap-align: start; }
+  .k-foto { --w: min(520px, 82vw); --r: 3 / 2; }
+  .k-video { --w: min(760px, 88vw); --r: 16 / 9; }
+  .k-desain { --w: min(400px, 80vw); --r: 4 / 5; }
+  .media { aspect-ratio: var(--r); border-radius: 12px; overflow: hidden; background: var(--card); border: 1px solid var(--line); }
   .media img, .media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .k-desain .media img { object-fit: contain; }
   .media img { cursor: zoom-in; }
-  .item figcaption { margin-top: 8px; font-weight: 600; }
+  figcaption { margin-top: 10px; }
+  .cap-title { display: block; font: 400 .78rem/1.4 var(--sans); color: var(--muted); }
+  .cap-sub { display: block; margin-top: 2px; font: 300 .68rem/1.4 var(--sans); color: var(--dim); letter-spacing: .04em; }
+  .empty { width: 100%; padding: 56px 0; text-align: center; font-size: .82rem; color: var(--dim); }
+
   dialog { border: 0; padding: 0; background: transparent; max-width: 94vw; max-height: 94vh; }
-  dialog::backdrop { background: rgba(0,0,0,.85); }
-  dialog img { max-width: 94vw; max-height: 90vh; border-radius: 12px; display: block; }
-  @media (max-width: 820px) { .folio { padding: 28px 20px; } }
-  /* Tablet dan HP */
-  @media (max-width: 820px) {
-    body { padding: 16px; }
-    .page { grid-template-columns: 1fr; }
-    aside { padding: 72px 24px 36px; border-bottom-width: 10px; }
-    .cover { height: 240px; }
-    .photo { width: 150px; height: 150px; font-size: 48px; }
-    main { padding: 32px 24px; }
-    dl { grid-template-columns: 1fr; }
+  dialog::backdrop { background: rgba(0, 0, 0, .88); }
+  dialog img { max-width: 94vw; max-height: 90vh; border-radius: 10px; display: block; }
+
+  footer { text-align: center; padding: 48px var(--pad) 40px; font-size: .76rem; color: var(--dim); border-top: 1px solid var(--line); }
+  footer a { color: var(--muted); text-underline-offset: 3px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 0; text-align: center; padding-top: 32px; }
+    .hero-text { padding-bottom: 32px; }
+    .lead { margin-inline: auto; }
+    .cta { justify-content: center; }
+    .portrait { order: -1; width: min(300px, 74vw); margin-bottom: 8px; }
+    .hero-text { order: 1; }
+    .about { grid-template-columns: 1fr; }
+    .top { flex-wrap: wrap; }
+    .top nav { width: 100%; overflow-x: auto; gap: 20px; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="page">
+<div class="bg"></div>
+<div class="batik" aria-hidden="true"></div>
 
-  <aside>
-    <!-- Foto background: simpan dengan nama bg.jpg di folder yang sama -->
-    <div class="cover" aria-hidden="true"></div>
-    <!-- Taruh foto kamu di folder yang sama, dengan nama: foto.jpg -->
-    <div class="photo" id="photo">
-      <img src="DSC_1883.jpg 1-removed-bg.png" alt="Foto profil Nama Lengkap Kamu"
-           onerror="this.remove(); document.getElementById('photo').textContent='NK';">
-    </div>
-    <h1>Nama Lengkap Kamu</h1>
-    <p class="tagline">Pelajar / Mahasiswa / Pekerjaan kamu</p>
+<header class="top">
+  <a class="logo" href="#">Nafseo</a>
+  <nav>
+    <a href="#tentang">Tentang</a>
+    <a href="#portofolio">Portofolio</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+</header>
 
-    <div class="actions">
-      <button class="primary" id="share" type="button">Bagikan profil</button>
-      <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Kirim via WhatsApp</a>
+<main>
+  <section class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Web Creative</span>
+      <h1>Nafseo</h1>
+      <p class="fullname">Muhammad Nafis</p>
+      <p class="lead">Foto, video, dan desain grafis.</p>
+      <div class="cta">
+        <a class="btn primary" href="#portofolio">Lihat portofolio</a>
+        <button class="btn" id="share" type="button">Bagikan profil</button>
+      </div>
       <p id="status" role="status" aria-live="polite"></p>
     </div>
-  </aside>
-
-  <main>
-    <section>
-      <h2>Tentang saya</h2>
-      <p class="about">rrrrrrrrrrrrrrrrrrrrrr</p>
-    </section>
-
-    <section>
-      <h2>Data pribadi</h2>
-      <!-- Edit atau hapus baris sesuai kebutuhan -->
-      <dl>
-        <div class="row"><dt>Nama lengkap</dt><dd>Nama Lengkap Kamu</dd></div>
-        <div class="row"><dt>Tempat, tanggal lahir</dt><dd>Yogyakarta, 1 Januari 2000</dd></div>
-        <div class="row"><dt>Domisili</dt><dd>Yogyakarta, Indonesia</dd></div>
-        <div class="row"><dt>Pendidikan</dt><dd>Nama sekolah / kampus</dd></div>
-      </dl>
-    </section>
-
-    <section>
-      <h2>Kontak</h2>
-      <dl>
-        <div class="row"><dt>Email</dt><dd><a href="mailto:emailkamu@gmail.com">emailkamu@gmail.com</a></dd></div>
-        <div class="row"><dt>WhatsApp</dt><dd><a href="https://wa.me/6281234567890">0812-3456-7890</a></dd></div>
-        <div class="row"><dt>Instagram</dt><dd><a href="https://instagram.com/usernamekamu">@usernamekamu</a></dd></div>
-        <div class="row"><dt>GitHub</dt><dd><a href="https://github.com/usernamekamu">github.com/usernamekamu</a></dd></div>
-      </dl>
-    </section>
-  </main>
-
-</div>
-
-<!-- ===== PORTOFOLIO ===== -->
-<section class="folio" aria-labelledby="folio-title">
-  <h2 class="folio-title" id="folio-title">Portofolio</h2>
-  <div class="folio-top">
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" id="tab-desain" aria-controls="desain" aria-selected="true" type="button">Desain grafis</button>
-      <button class="tab" role="tab" id="tab-fgvg" aria-controls="fgvg" aria-selected="false" type="button">Fotografi &amp; videografi</button>
+    <!-- Foto profil: simpan sebagai foto.jpg. Foto latar: simpan sebagai bg.jpg -->
+    <div class="portrait">
+      <div class="inner" id="photo">
+        <img src="foto.jpg" alt="Foto profil Nafseo"
+             onerror="this.remove(); document.getElementById('photo').textContent='MN';">
+      </div>
     </div>
-    <div class="nav">
-      <button type="button" id="prev" aria-label="Geser ke kiri">&#8592;</button>
-      <button type="button" id="next" aria-label="Geser ke kanan">&#8594;</button>
+  </section>
+
+  <section class="section" id="tentang">
+    <div class="about">
+      <div>
+        <span class="eyebrow">Tentang saya</span>
+        <h2 class="title">Halo, saya Nafseo.</h2>
+        <p>Assalamualaikum, saya Nafseo. Sudah lama berkecimpung dalam dunia kreatif dan media. Hal yang saya buat dalam dunia kreatif ada foto, video, dan desain grafis.</p>
+      </div>
+      <dl class="panel">
+        <div class="row"><dt>Nama lengkap</dt><dd>Muhammad Nafis</dd></div>
+        <div class="row"><dt>Tempat, tanggal lahir</dt><dd>Padang, 26 Maret 2007</dd></div>
+        <div class="row"><dt>Domisili</dt><dd>Sleman, Yogyakarta</dd></div>
+        <div class="row"><dt>Pendidikan</dt><dd>Sekolah Tinggi Multimedia Yogyakarta</dd></div>
+      </dl>
     </div>
+  </section>
+
+  <div class="folio-main" id="portofolio">
+    <span class="eyebrow">Karya pilihan</span>
+    <h2>Portofolio</h2>
   </div>
 
-  <!-- DESAIN GRAFIS: salin blok <figure> untuk menambah karya -->
-  <div class="track" id="desain" role="tabpanel" aria-labelledby="tab-desain" tabindex="0">
-    <figure class="item">
-      <div class="media"><img src="portfolio/desain-1.jpg" alt="Desain poster" loading="lazy"></div>
-      <figcaption>Judul karya 1</figcaption>
-    </figure>
-    <figure class="item">
-      <div class="media"><img src="portfolio/desain-2.jpg" alt="Desain logo" loading="lazy"></div>
-      <figcaption>Judul karya 2</figcaption>
-    </figure>
-    <figure class="item">
-      <div class="media"><img src="portfolio/desain-3.jpg" alt="Desain banner" loading="lazy"></div>
-      <figcaption>Judul karya 3</figcaption>
-    </figure>
-  </div>
+  <!-- Tiga slide terpisah. Isinya dibaca otomatis dari folder masing-masing di GitHub -->
+  <section class="slide k-foto" id="fotografi" data-folder="portfolio/foto" data-kind="Fotografi">
+    <div class="slide-head">
+      <div><span class="eyebrow">01</span><h3>Fotografi</h3><p>Momen dan cerita yang direkam lewat lensa.</p></div>
+      <div class="nav"><button type="button" data-dir="-1" aria-label="Geser ke kiri">&#8592;</button><button type="button" data-dir="1" aria-label="Geser ke kanan">&#8594;</button></div>
+    </div>
+    <div class="track" tabindex="0"><p class="empty">Memuat karya…</p></div>
+  </section>
 
-  <!-- FOTOGRAFI & VIDEOGRAFI: foto pakai <img>, video pakai <video> -->
-  <div class="track" id="fgvg" role="tabpanel" aria-labelledby="tab-fgvg" tabindex="0" hidden>
-    <figure class="item">
-      <div class="media"><img src="portfolio/foto-1.jpg" alt="Foto portofolio 1" loading="lazy"></div>
-      <figcaption>Foto 1</figcaption>
-    </figure>
-    <figure class="item">
-      <div class="media"><video src="portfolio/video-1.mp4" controls preload="metadata" playsinline></video></div>
-      <figcaption>Video 1</figcaption>
-    </figure>
-    <figure class="item">
-      <div class="media"><img src="portfolio/foto-2.jpg" alt="Foto portofolio 2" loading="lazy"></div>
-      <figcaption>Foto 2</figcaption>
-    </figure>
-  </div>
-</section>
-</div>
+  <section class="slide k-video" id="videografi" data-folder="portfolio/video" data-kind="Videografi">
+    <div class="slide-head">
+      <div><span class="eyebrow">02</span><h3>Videografi</h3><p>Cerita bergerak, dari pengambilan gambar sampai penyuntingan.</p></div>
+      <div class="nav"><button type="button" data-dir="-1" aria-label="Geser ke kiri">&#8592;</button><button type="button" data-dir="1" aria-label="Geser ke kanan">&#8594;</button></div>
+    </div>
+    <div class="track" tabindex="0"><p class="empty">Memuat karya…</p></div>
+  </section>
+
+  <section class="slide k-desain" id="desain" data-folder="portfolio/desain" data-kind="Desain grafis">
+    <div class="slide-head">
+      <div><span class="eyebrow">03</span><h3>Desain Grafis</h3><p>Poster, logo, dan identitas visual.</p></div>
+      <div class="nav"><button type="button" data-dir="-1" aria-label="Geser ke kiri">&#8592;</button><button type="button" data-dir="1" aria-label="Geser ke kanan">&#8594;</button></div>
+    </div>
+    <div class="track" tabindex="0"><p class="empty">Memuat karya…</p></div>
+  </section>
+
+  <section class="section" id="kontak">
+    <span class="eyebrow">Kontak</span>
+    <h2 class="title">Mari bekerja sama.</h2>
+    <div class="contact">
+      <a class="card" href="mailto:025241461167@mail.mmtc.ac.id"><small>Email</small><span>025241461167@mail.mmtc.ac.id</span></a>
+      <a class="card" href="https://web.whatsapp.com/" target="_blank" rel="noopener"><small>WhatsApp</small><span>0812-5847-5578</span></a>
+      <a class="card" href="https://www.instagram.com/" target="_blank" rel="noopener"><small>Instagram</small><span>@nafseo_m</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> Nafseo &middot; Muhammad Nafis &middot; <a id="wa" href="#" target="_blank" rel="noopener">Bagikan lewat WhatsApp</a></p>
+</footer>
 
 <dialog id="viewer"><img id="viewer-img" alt=""></dialog>
 
 <script>
-  var url = location.href.split('#')[0];
-  var title = document.title;
-  var status = document.getElementById('status');
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  document.getElementById('wa').href =
-    'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url);
-
+  /* Bagikan profil */
+  var url = location.href.split('#')[0], title = document.title, statusEl = document.getElementById('status');
+  document.getElementById('wa').href = 'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url);
   document.getElementById('share').addEventListener('click', function () {
-    if (navigator.share) {
-      navigator.share({ title: title, url: url }).catch(function () {});
-    } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(function () {
-        status.textContent = 'Link disalin.';
-      }, function () {
-        status.textContent = 'Salin link dari address bar.';
-      });
-    } else {
-      status.textContent = 'Salin link dari address bar.';
-    }
+    if (navigator.share) { navigator.share({ title: title, url: url }).catch(function () {}); }
+    else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function () { statusEl.textContent = 'Link disalin.'; },
+        function () { statusEl.textContent = 'Salin link dari address bar.'; });
+    } else { statusEl.textContent = 'Salin link dari address bar.'; }
   });
 
-  /* Portofolio: tab, geser, dan perbesar foto */
-  var tabs = document.querySelectorAll('.tab');
-  var tracks = document.querySelectorAll('.track');
-  function active() { return document.querySelector('.track:not([hidden])'); }
-
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
-      tracks.forEach(function (tr) { tr.hidden = tr.id !== tab.getAttribute('aria-controls'); });
-      active().scrollLeft = 0;
-    });
-  });
-
-  function slide(dir) {
-    var t = active();
-    t.scrollBy({ left: dir * (t.clientWidth * 0.8), behavior: 'smooth' });
-  }
-  document.getElementById('prev').addEventListener('click', function () { slide(-1); });
-  document.getElementById('next').addEventListener('click', function () { slide(1); });
-
-  var viewer = document.getElementById('viewer');
-  var viewerImg = document.getElementById('viewer-img');
-  document.querySelectorAll('.media img').forEach(function (img) {
-    img.addEventListener('click', function () {
-      viewerImg.src = img.src; viewerImg.alt = img.alt; viewer.showModal();
-    });
-  });
+  /* Foto diperbesar */
+  var viewer = document.getElementById('viewer'), viewerImg = document.getElementById('viewer-img');
   viewer.addEventListener('click', function () { viewer.close(); });
+
+  /* ===== Portofolio otomatis dari folder GitHub =====
+     portfolio/foto, portfolio/video, portfolio/desain
+     Keterangan kecil: namai file  "Judul--Keterangan.jpg"
+     GH_USER / GH_REPO dikosongkan = terdeteksi otomatis dari alamat web. */
+  var GH_USER = '', GH_REPO = '';
+  var IMG = /\.(jpe?g|png|webp|gif|avif)$/i, VID = /\.(mp4|webm|mov|m4v)$/i;
+
+  function repoInfo() {
+    var host = location.hostname, user = GH_USER, repo = GH_REPO;
+    if (!user && /\.github\.io$/.test(host)) {
+      user = host.split('.')[0];
+      var seg = location.pathname.split('/')[1];
+      repo = repo || (seg ? seg : user + '.github.io');
+    }
+    return user && repo ? { user: user, repo: repo } : null;
+  }
+
+  function showEmpty(track, msg) {
+    track.innerHTML = '';
+    var p = document.createElement('p'); p.className = 'empty'; p.textContent = msg; track.appendChild(p);
+  }
+
+  function span(cls, text) { var s = document.createElement('span'); s.className = cls; s.textContent = text; return s; }
+
+  function render(track, files, folder, kind) {
+    track.innerHTML = '';
+    var list = files.filter(function (f) { return f.type === 'file' && (IMG.test(f.name) || VID.test(f.name)); })
+      .sort(function (a, b) { return a.name.localeCompare(b.name, undefined, { numeric: true }); });
+    if (!list.length) { showEmpty(track, 'Belum ada karya di sini.'); return; }
+    list.forEach(function (f) {
+      var base = f.name.replace(/\.[^.]+$/, '').split('--');
+      var cap = base[0].replace(/[-_]+/g, ' ').trim(), desc = (base[1] || '').replace(/[-_]+/g, ' ').trim();
+      var src = folder + '/' + encodeURIComponent(f.name), el;
+      if (VID.test(f.name)) {
+        el = document.createElement('video');
+        el.src = src; el.controls = true; el.preload = 'metadata'; el.setAttribute('playsinline', '');
+      } else {
+        el = document.createElement('img');
+        el.src = src; el.alt = cap; el.loading = 'lazy';
+        el.addEventListener('click', function () { viewerImg.src = src; viewerImg.alt = cap; viewer.showModal(); });
+      }
+      var fig = document.createElement('figure'); fig.className = 'item';
+      var box = document.createElement('div'); box.className = 'media'; box.appendChild(el);
+      var fc = document.createElement('figcaption');
+      fc.appendChild(span('cap-title', cap));
+      fc.appendChild(span('cap-sub', desc || kind));
+      fig.appendChild(box); fig.appendChild(fc); track.appendChild(fig);
+    });
+  }
+
+  document.querySelectorAll('.slide').forEach(function (sec) {
+    var track = sec.querySelector('.track'), folder = sec.dataset.folder, kind = sec.dataset.kind, info = repoInfo();
+    sec.querySelectorAll('.nav button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        track.scrollBy({ left: Number(b.dataset.dir) * track.clientWidth * 0.8, behavior: 'smooth' });
+      });
+    });
+    if (!info) { showEmpty(track, 'Karya akan muncul setelah web ini dibuka lewat GitHub Pages.'); return; }
+    fetch('https://api.github.com/repos/' + info.user + '/' + info.repo + '/contents/' + folder)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (files) { render(track, files, folder, kind); })
+      .catch(function () { showEmpty(track, 'Belum ada karya di sini.'); });
+  });
 </script>
 </body>
 </html>

@@ -3,450 +3,398 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#02050c">
-<title>Nafseo – Web Creative</title>
-<meta name="description" content="Profil Nafseo (Muhammad Nafis) – foto, video, dan desain grafis.">
-<meta property="og:title" content="Nafseo – Web Creative">
-<meta property="og:description" content="Portofolio foto, video, dan desain grafis.">
+<title>Nama Lengkap Kamu – Profil</title>
+<meta name="description" content="Profil pribadi Nama Lengkap Kamu">
+<meta property="og:title" content="Nama Lengkap Kamu">
+<meta property="og:description" content="Profil pribadi dan kontak.">
 <meta property="og:image" content="foto.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js');</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --accent: #7fb4e6;
-    --text: #e8eef6; --soft: #aebccd; --muted: #8592a5; --dim: #5f6c80;
-    --card: rgba(255, 255, 255, .035); --line: rgba(255, 255, 255, .09);
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --pad: clamp(20px, 6vw, 96px);
+    --black: #04060b; --navy: #08111f; --blue: #2d4ea0; --sky: #6c93d6;
+    --gold: #c99a3e; --ink: #e8edf6; --muted: #8794b0; --line: rgba(130,155,210,.14);
+    --ease: cubic-bezier(.2,.7,.2,1);
     color-scheme: dark;
+    /* Motif batik kawung */
+    --kawung: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' fill='none' stroke='%23c99a3e' stroke-width='1'%3E%3Cellipse cx='30' cy='15' rx='7' ry='14'/%3E%3Cellipse cx='30' cy='45' rx='7' ry='14'/%3E%3Cellipse cx='15' cy='30' rx='14' ry='7'/%3E%3Cellipse cx='45' cy='30' rx='14' ry='7'/%3E%3C/svg%3E");
   }
   * { box-sizing: border-box; margin: 0; }
-  html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
-  body { background: #02050c; color: var(--text); font: 300 1rem/1.7 var(--sans); overflow-x: hidden; }
-  button { font: inherit; color: inherit; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  /* Latar: gradasi biru gelap ke hitam, batik Minang sangat tipis */
-  .bg { position: fixed; inset: 0; z-index: -2; background:
-      radial-gradient(700px 500px at 85% 8%, rgba(40, 100, 190, .26), transparent 70%),
-      linear-gradient(170deg, #01030a 0%, #04101f 42%, #0a2240 100%); }
-  .batik { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .06;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20120%20120'%20fill='none'%20stroke='%237fb4e6'%20stroke-width='1'%3E%0A%3Cpath%20d='M60%203%20L117%2060%20L60%20117%20L3%2060Z'/%3E%0A%3Cpath%20d='M60%2020%20L100%2060%20L60%20100%20L20%2060Z'/%3E%0A%3Cpath%20d='M60%2060%20a3%203%200%200%201%206%200%20a6%206%200%200%201%20-12%200%20a9%209%200%200%201%2018%200%20a12%2012%200%200%201%20-24%200'/%3E%0A%3Cpath%20d='M60%203%20v17%20M117%2060%20h-17%20M60%20117%20v-17%20M3%2060%20h17'/%3E%0A%3Cpath%20d='M0%200%20L10%200%20L0%2010Z%20M120%200%20L110%200%20L120%2010Z%20M0%20120%20L10%20120%20L0%20110Z%20M120%20120%20L110%20120%20L120%20110Z'/%3E%0A%3C/svg%3E"); background-size: 120px 120px;
-    -webkit-mask-image: linear-gradient(180deg, #000, rgba(0,0,0,.4)); mask-image: linear-gradient(180deg, #000, rgba(0,0,0,.4)); }
-
-  /* Animasi muncul saat di-scroll */
-  .js .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
-  .js .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .js .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    color: var(--ink); overflow-x: hidden;
+    background: linear-gradient(180deg, var(--black) 0%, var(--navy) 50%, #0a1730 100%) fixed;
+    font: 400 1rem/1.7 "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
+  h1, h2, h3, .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: -.03em; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
 
-  /* Navigasi pill melayang */
-  .top { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 30; display: flex; align-items: center; gap: 22px;
-    padding: 8px 10px 8px 22px; border-radius: 999px; max-width: calc(100vw - 24px);
-    background: rgba(8, 18, 34, .62); border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-  .logo { font: 500 1rem/1 var(--sans); letter-spacing: .03em; color: var(--text); text-decoration: none; }
-  .top nav { display: flex; gap: 2px; }
-  .top nav a { font: 400 .8rem/1 var(--sans); color: var(--soft); text-decoration: none; padding: 10px 16px; border-radius: 999px; }
-  .top nav a:hover { color: var(--text); background: rgba(255, 255, 255, .07); }
+  @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  @keyframes drift { to { transform: translate(14vmax, 10vmax); } }
+  @keyframes grow { from { width: 0; } to { width: 40px; } }
 
-  .eyebrow { font: 400 .72rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
-  .chip { display: inline-block; font: 400 .78rem/1 var(--sans); letter-spacing: .04em; color: var(--soft);
-    padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+  /* Navigasi atas */
+  .nav-top {
+    position: fixed; inset: 0 0 auto 0; z-index: 20; height: 64px;
+    background: rgba(4,6,11,.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-top .container { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .brand { text-decoration: none; font-size: 1.1rem; }
+  .links { display: flex; gap: 28px; }
+  .links a { text-decoration: none; color: var(--muted); font-size: .92rem; font-weight: 500; transition: color .2s; }
+  .links a:hover { color: var(--ink); }
 
   /* Hero */
-  .hero { position: relative; isolation: isolate; scroll-snap-align: start; min-height: 100vh; min-height: 100svh;
-    display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 40px; padding: 110px var(--pad) 0; }
-  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .38;
-    background: url("bg.jpg") center / cover no-repeat;
-    -webkit-mask-image: radial-gradient(ellipse at 65% 45%, #000 10%, transparent 70%); mask-image: radial-gradient(ellipse at 65% 45%, #000 10%, transparent 70%); }
-  .hero-text { align-self: center; padding-bottom: 64px; }
-  h1 { font: 400 clamp(3.8rem, 10vw, 8rem)/1 var(--sans); letter-spacing: -.05em; margin: 24px 0 14px;
-    background: linear-gradient(180deg, #fff 30%, #8db8ea); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .fullname { font: 400 1rem/1.4 var(--sans); letter-spacing: .06em; color: var(--soft); }
-  .lead { margin-top: 18px; max-width: 42ch; color: var(--muted); }
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
-  .btn { font: 400 .85rem/1 var(--sans); letter-spacing: .03em; padding: 15px 26px; border-radius: 999px; cursor: pointer;
-    text-decoration: none; border: 1px solid var(--line); background: var(--card); color: var(--text); display: inline-block; transition: border-color .2s, filter .2s; }
-  .btn:hover { border-color: var(--accent); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #051224; font-weight: 500; }
-  .btn.primary:hover { filter: brightness(1.08); }
-  #status { margin-top: 10px; min-height: 1.4em; font-size: .78rem; color: var(--muted); }
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; }
+  .hero::before {
+    content: ""; position: absolute; z-index: -1; width: 70vmax; height: 70vmax; right: -25vmax; top: -20vmax;
+    background: radial-gradient(closest-side, rgba(45,78,160,.35), transparent);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0 0 0 40%; z-index: -1; pointer-events: none;
+    background: var(--kawung); opacity: .05;
+    -webkit-mask-image: radial-gradient(closest-side at 70% 45%, #000, transparent);
+            mask-image: radial-gradient(closest-side at 70% 45%, #000, transparent);
+  }
+  .hero .container { width: 100%; display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: center; }
+  .hero-text > * { animation: rise .9s var(--ease) both; }
+  .hero-text > :nth-child(1) { animation-delay: .05s; }
+  .hero-text > :nth-child(2) { animation-delay: .15s; }
+  .hero-text > :nth-child(3) { animation-delay: .25s; }
+  .hero-text > :nth-child(4) { animation-delay: .35s; }
+  .bar { width: 40px; height: 3px; border-radius: 2px; background: var(--gold); animation: grow .8s var(--ease) .1s both !important; }
+  h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); line-height: 1.02; margin-top: 24px;
+       background: linear-gradient(100deg, #fff 30%, #8aa9de); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tagline { color: var(--muted); font-size: 1.15rem; margin-top: 16px; }
+  .intro { max-width: 52ch; color: var(--muted); margin-top: 20px; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+  button, .btn {
+    font: 600 .92rem "DM Sans", system-ui, sans-serif; padding: 13px 26px; border-radius: 999px;
+    border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; text-decoration: none; display: inline-block;
+    transition: background .25s, border-color .25s, transform .25s var(--ease), box-shadow .25s;
+  }
+  .primary { background: linear-gradient(90deg, #2d4ea0, #4a74c4); border-color: transparent; color: #fff; }
+  .btn:hover { background: rgba(255,255,255,.05); border-color: rgba(130,155,210,.4); transform: translateY(-2px); }
+  .primary:hover { box-shadow: 0 10px 28px rgba(45,78,160,.45); }
+  button:active, .btn:active { transform: scale(.98); }
+  #status { width: 100%; min-height: 1.4em; font-size: .88rem; color: var(--muted); }
 
-  /* Foto profil tanpa bingkai, bagian bawah memudar */
-  .portrait { justify-self: center; align-self: end; width: min(440px, 82vw); aspect-ratio: 3 / 4; overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%); mask-image: linear-gradient(to bottom, #000 55%, transparent 100%); }
-  .portrait .inner { width: 100%; height: 100%; display: grid; place-items: center;
-    background: linear-gradient(160deg, #0d2b4d, #02050c); color: var(--accent); font: 300 5rem/1 var(--sans); }
-  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Foto persegi minimalis dengan gradasi samar di bagian bawah */
+  .photo-wrap { animation: rise 1s var(--ease) .2s both; justify-self: end; width: min(100%, 320px); }
+  .photo { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 12px; background: #0c1730; }
+  .photo::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to bottom, transparent 35%, rgba(45,78,160,.14) 70%, rgba(45,78,160,.26) 100%);
+  }
+  .photo-in { width: 100%; height: 100%; display: grid; place-items: center; font: 700 56px "Space Grotesk", sans-serif; color: #dfe7f7; }
+  .photo-in img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* Bagian umum */
-  .section { padding: clamp(72px, 10vw, 120px) var(--pad); }
-  .title { font: 400 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--sans); letter-spacing: -.03em; margin-top: 14px; }
-
-  /* Tentang: bento */
-  .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 36px; }
-  .cell { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px 28px; }
-  .cell.intro { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
-  .cell.intro p { color: var(--soft); font-size: 1.05rem; }
-  .cell dt { font: 400 .68rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .cell dd { font-weight: 400; font-size: 1.05rem; line-height: 1.45; word-break: break-word; }
-  .cell.data { min-height: 150px; display: flex; flex-direction: column; justify-content: flex-end; transition: border-color .2s, transform .2s; }
-  .cell.data:hover { border-color: rgba(127, 180, 230, .45); transform: translateY(-3px); }
+  /* Info tiga kolom */
+  .info { padding: 96px 0; border-top: 1px solid var(--line); }
+  .info .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; max-width: 1240px; }
+  h2 { font-size: 1.3rem; margin-bottom: 20px; }
+  .about { color: var(--muted); max-width: 46ch; }
+  dl { display: grid; }
+  .row { padding: 14px 0; border-top: 1px solid var(--line); }
+  dt { font-size: .82rem; color: var(--muted); }
+  dd { font-weight: 600; word-break: break-word; }
+  dd a { text-decoration: none; background: linear-gradient(var(--gold), var(--gold)) 0 100% / 100% 1px no-repeat; transition: background-size .3s var(--ease), color .2s; }
+  dd a:hover { color: var(--sky); background-size: 100% 2px; }
 
   /* Portofolio */
-  .folio-main { text-align: center; padding: clamp(72px, 9vw, 110px) var(--pad) 0; }
-  .folio-main h2 { font: 400 clamp(1.7rem, 6vw, 4rem)/1.1 var(--sans); text-transform: uppercase; letter-spacing: .26em; padding-left: .26em; margin-top: 16px; }
-  .slide { scroll-snap-align: start; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
-    padding: 96px var(--pad) 72px; }
-  .slide-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+  .folio { padding: 96px 0 120px; border-top: 1px solid var(--line); }
+  .folio-title { font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1; letter-spacing: -.045em; margin-bottom: 72px; }
+  .group + .group { margin-top: 96px; }
+  .group-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 20px; margin-bottom: 28px; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 1.7rem; }
+  .count { color: var(--muted); font-size: .9rem; }
+  .gt-right { display: flex; align-items: center; gap: 20px; }
   .nav { display: flex; gap: 8px; }
-  .nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; font-size: 1.05rem; transition: border-color .2s; }
-  .nav button:hover { border-color: var(--accent); }
-  .slide-head h3 { font: 400 clamp(2rem, 4.4vw, 3.1rem)/1.1 var(--sans); letter-spacing: -.03em; margin-top: 12px; }
-  .slide-head p { margin-top: 8px; font-size: .86rem; color: var(--muted); }
+  .nav button { width: 46px; height: 46px; padding: 0; border-radius: 50%; font-size: 1.1rem; }
+  .nav button:hover { background: rgba(255,255,255,.06); }
+  .nav button:disabled { opacity: .3; cursor: default; transform: none; background: transparent; }
+  .track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; padding-bottom: 16px; scrollbar-color: rgba(130,155,210,.3) transparent; }
+  .item { flex: 0 0 min(600px, 86%); scroll-snap-align: start; scroll-snap-stop: always; margin: 0; }
+  .item.wide { flex-basis: min(720px, 90%); }
+  .media { aspect-ratio: 4 / 3; overflow: hidden; border-radius: 18px; background: linear-gradient(135deg, #12255a, var(--black)); }
+  .media.wide { aspect-ratio: 16 / 9; }
+  .media img, .media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media img { cursor: zoom-in; transition: transform .6s var(--ease); }
+  .media img:hover { transform: scale(1.05); }
+  .item figcaption { margin-top: 12px; font-weight: 600; font-size: 1rem; }
 
-  .track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 18px; cursor: grab;
-    scrollbar-width: thin; scrollbar-color: rgba(127, 180, 230, .3) transparent; }
-  .track.dragging { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; user-select: none; }
-  .k-foto { --w: min(520px, 80vw); --r: 3 / 2; }
-  .k-video { --w: min(720px, 86vw); --r: 16 / 9; }
-  .k-desain { --w: min(380px, 78vw); --r: 4 / 5; }
-  .tile, .slot { flex: 0 0 var(--w); aspect-ratio: var(--r); scroll-snap-align: start; }
-  .tile { position: relative; overflow: hidden; display: block; padding: 0; text-align: left; cursor: pointer;
-    border-radius: 18px; background: var(--card); border: 1px solid var(--line); transition: border-color .2s; }
-  .tile:hover { border-color: rgba(127, 180, 230, .5); }
-  .tile img, .tile video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
-  .tile:hover img, .tile:hover video { transform: scale(1.04); }
-  .k-desain .tile img { object-fit: contain; padding: 8px; }
-  .tile img, .tile video { -webkit-user-drag: none; user-select: none; }
-  .cap { position: absolute; inset: auto 0 0 0; padding: 38px 14px 12px; pointer-events: none;
-    background: linear-gradient(to top, rgba(2, 5, 12, .88), transparent); }
-  .cap-title { display: block; font: 400 .78rem/1.4 var(--sans); color: #b4bfce; }
-  .cap-sub { display: block; margin-top: 2px; font: 300 .68rem/1.4 var(--sans); color: #8592a5; letter-spacing: .04em; }
-  .play { position: absolute; top: 50%; left: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%;
-    background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .3); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); pointer-events: none; }
-  .play::after { content: ""; position: absolute; top: 50%; left: 50%; margin: -7px 0 0 -4px; border-style: solid; border-width: 7px 0 7px 12px; border-color: transparent transparent transparent #fff; }
-  .slot { display: grid; place-items: center; text-align: center; padding: 16px; cursor: default;
-    border: 1px dashed rgba(255, 255, 255, .16); border-radius: 18px; color: var(--dim); font-size: .8rem; line-height: 1.5; }
-  .slot small { display: block; font-size: .68rem; color: #46526a; letter-spacing: .04em; }
 
-  /* Tampilan diperbesar (di tengah layar) */
-  dialog { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; border: 0; padding: 0; background: transparent; color: var(--text); }
-  dialog[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  dialog::backdrop { background: rgba(2, 5, 12, .92); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-  dialog[open]::backdrop { animation: fadein .3s ease; }
-  @keyframes fadein { from { opacity: 0; } }
-  #viewer-body img, #viewer-body video { max-width: 90vw; max-height: 76vh; border-radius: 14px; display: block; background: #000; box-shadow: 0 30px 80px rgba(0, 0, 0, .55); }
-  #viewer-cap { margin-top: 16px; padding: 0 20px; text-align: center; max-width: 90vw; }
-  .vcap-title { display: block; font: 400 .85rem/1.4 var(--sans); color: #b4bfce; }
-  .vcap-sub { display: block; margin-top: 2px; font: 300 .72rem/1.4 var(--sans); color: var(--muted); letter-spacing: .04em; }
-  .close, .vnav { position: absolute; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255, 255, 255, .08); cursor: pointer; font-size: 1.1rem; line-height: 1; transition: border-color .2s; }
-  .close:hover, .vnav:hover { border-color: var(--accent); }
-  .close { top: 20px; right: 20px; font-size: 1.4rem; }
-  .vnav { top: 50%; margin-top: -22px; }
-  .vnav.prev { left: 20px; }
-  .vnav.next { right: 20px; }
-  .vnav[hidden] { display: none; }
+  /* Hubungi saya */
+  .reach { position: relative; padding: 72px 0 80px; border-top: 1px solid var(--line); }
+  .reach::before {
+    content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 80% at 50% 100%, rgba(45,78,160,.22), transparent);
+  }
+  .reach .container { width: 100%; }
+  .reach-title { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; letter-spacing: -.035em; margin-bottom: 10px; }
+  .reach-sub { color: var(--muted); max-width: 48ch; font-size: 1rem; margin-bottom: 36px; }
+  .reach-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .r-link { position: relative; display: block; padding: 18px 32px 0 0; border-top: 1px solid var(--line); text-decoration: none; transition: border-color .3s, transform .4s var(--ease); }
+  .r-link small { display: block; color: var(--muted); font-size: .82rem; }
+  .r-link strong { display: block; font: 600 1.05rem/1.4 "Space Grotesk", sans-serif; letter-spacing: -.01em; margin-top: 2px; word-break: break-word; }
+  .r-link span { position: absolute; right: 0; top: 18px; color: var(--gold); font-size: 1.1rem; transition: transform .3s var(--ease); }
+  .r-link:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .r-link:hover span { transform: translate(3px, -3px); }
+  .r-link:hover strong { color: var(--sky); }
 
-  /* Kontak */
-  .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; margin-top: 32px; }
-  .card { display: block; position: relative; text-decoration: none; color: var(--text); padding: 24px 52px 24px 26px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); transition: border-color .2s, transform .2s; }
-  .card:hover { border-color: rgba(127, 180, 230, .5); transform: translateY(-3px); }
-  .card::after { content: "\2197"; position: absolute; right: 22px; top: 22px; color: var(--accent); }
-  .card small { display: block; font: 400 .68rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .card span { word-break: break-word; }
+  footer { border-top: 1px solid var(--line); padding: 32px 0; color: var(--muted); font-size: .88rem; }
 
-  footer { text-align: center; padding: 48px var(--pad) 40px; font-size: .76rem; color: var(--dim); border-top: 1px solid var(--line); }
-  footer a { color: var(--muted); text-underline-offset: 3px; }
+  /* Animasi muncul saat di-scroll (aktif hanya jika JavaScript jalan) */
+  .js .reveal { opacity: 0; transform: translateY(32px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .group .item { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .js .group.in .item { opacity: 1; transform: none; }
+  .js .group.in .item:nth-child(2) { transition-delay: .08s; }
+  .js .group.in .item:nth-child(3) { transition-delay: .16s; }
+  .js .group.in .item:nth-child(4) { transition-delay: .24s; }
+  .js .group.in .item:nth-child(5) { transition-delay: .32s; }
 
-  @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 0; text-align: center; padding-top: 96px; }
-    .hero-text { padding-bottom: 32px; order: 1; }
-    .lead { margin-inline: auto; }
-    .cta { justify-content: center; }
-    .portrait { order: -1; width: min(280px, 70vw); margin-bottom: 8px; }
-    .bento { grid-template-columns: 1fr 1fr; }
-    .cell.intro { grid-column: span 2; grid-row: auto; }
-    .top { gap: 8px; padding-left: 16px; }
-    .top nav a { padding: 10px 11px; }
+  dialog { border: 0; padding: 0; background: transparent; max-width: 94vw; max-height: 94vh; }
+  dialog::backdrop { background: rgba(0,3,12,.92); }
+  dialog[open] img { animation: rise .35s var(--ease); }
+  dialog img { max-width: 94vw; max-height: 90vh; border-radius: 12px; display: block; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html, .track { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal, .js .group .item { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .links { gap: 18px; }
+    .hero { padding: 104px 0 64px; min-height: 0; }
+    .hero .container { grid-template-columns: 1fr; gap: 40px; }
+    .photo-wrap { order: -1; justify-self: start; width: min(100%, 240px); }
+    .info { padding: 64px 0; }
+    .info .container { grid-template-columns: 1fr; gap: 48px; }
+    .folio { padding: 64px 0 80px; }
+    .reach { padding: 56px 0 64px; }
+    .reach-list { grid-template-columns: 1fr; gap: 20px; }
+    .folio-title { margin-bottom: 48px; }
+    .track { gap: 16px; }
+  }
+  @media (max-width: 520px) {
+    .links { gap: 14px; }
+    .gt-right .count { display: none; }
   }
 </style>
 </head>
 <body>
-<div class="bg"></div>
-<div class="batik" aria-hidden="true"></div>
 
-<header class="top">
-  <a class="logo" href="#">Nafseo</a>
-  <nav>
-    <a href="#tentang">Tentang</a>
-    <a href="#portofolio">Portofolio</a>
-    <a href="#kontak">Kontak</a>
-  </nav>
+<header class="nav-top">
+  <div class="container">
+    <a class="brand" href="#atas">Nama Kamu</a>
+    <nav class="links" aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#portofolio">Portofolio</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main id="atas">
+  <!-- ===== HERO ===== -->
   <section class="hero">
-    <div class="hero-text reveal">
-      <span class="chip">Foto &middot; Video &middot; Desain grafis</span>
-      <h1>Nafseo</h1>
-      <p class="fullname">Muhammad Nafis &middot; Web Creative</p>
-      <p class="lead">Membuat visual yang bersih dan mudah diingat.</p>
-      <div class="cta">
-        <a class="btn primary" href="#portofolio">Lihat portofolio</a>
-        <button class="btn" id="share" type="button">Bagikan profil</button>
+    <div class="container">
+      <div class="hero-text">
+        <div class="bar" aria-hidden="true"></div>
+        <h1>Nafseo</h1>
+        <p class="tagline">Mahasiswa</p>
+        <p class="intro"></p>
+        <div class="actions">
+          <button class="primary" id="share" type="button">Bagikan profil</button>
+          <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Kirim via WhatsApp</a>
+          <p id="status" role="status" aria-live="polite"></p>
+        </div>
       </div>
-      <p id="status" role="status" aria-live="polite"></p>
-    </div>
-    <!-- Foto profil: simpan sebagai foto.jpg. Foto latar: simpan sebagai bg.jpg -->
-    <div class="portrait">
-      <div class="inner" id="photo">
-        <img src="foto.jpg" alt="Foto profil Nafseo"
-             onerror="this.remove(); document.getElementById('photo').textContent='MN';">
+
+      <div class="photo-wrap">
+        <!-- Taruh foto kamu di folder yang sama, dengan nama: foto.jpg -->
+        <div class="photo">
+          <div class="photo-in" id="photo">
+            <img src="foto.jpg" alt="Foto profil Nama Lengkap Kamu"
+                 onerror="this.remove(); document.getElementById('photo').textContent='NK';">
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="tentang">
-    <div class="reveal">
-      <span class="eyebrow">Tentang saya</span>
-      <h2 class="title">Sedikit tentang saya.</h2>
-    </div>
-    <div class="bento reveal">
-      <div class="cell intro">
-        <p>Assalamualaikum, saya Nafseo. Sudah lama berkecimpung dalam dunia kreatif dan media. Hal yang saya buat dalam dunia kreatif ada foto, video, dan desain grafis.</p>
+  <!-- ===== INFO ===== -->
+  <section class="info">
+    <div class="container">
+      <div id="tentang">
+        <h2>Tentang saya</h2>
+        <p class="about">assalamualaikum, saya Muhammad Nafis. Saya sudah lama berkecimpung dalam dunia kreatif dari segi banyak hal, seperti design grafis, foto, da videografis.</p>
       </div>
-      <dl class="cell data"><dt>Nama lengkap</dt><dd>Muhammad Nafis</dd></dl>
-      <dl class="cell data"><dt>Tempat, tanggal lahir</dt><dd>Padang, 26 Maret 2007</dd></dl>
-      <dl class="cell data"><dt>Domisili</dt><dd>Sleman, Yogyakarta</dd></dl>
-      <dl class="cell data"><dt>Pendidikan</dt><dd>Sekolah Tinggi Multimedia Yogyakarta</dd></dl>
+
+      <div>
+        <h2>Data pribadi</h2>
+        <!-- Edit atau hapus baris sesuai kebutuhan -->
+        <dl>
+          <div class="row"><dt>Nama lengkap</dt><dd>Muhammad Nafis</dd></div>
+          <div class="row"><dt>Tempat, tanggal lahir</dt><dd>Padang, 26 maret 2007</dd></div>
+          <div class="row"><dt>Domisili</dt><dd>Yogyakarta, Indonesia</dd></div>
+          <div class="row"><dt>Pendidikan</dt><dd>Sekolah Tinggi Multimedia Yogyakarta</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 
-  <div class="folio-main reveal" id="portofolio">
-    <span class="eyebrow">Karya pilihan</span>
-    <h2>Portofolio</h2>
-  </div>
+  <!-- ===== PORTOFOLIO: tiap bagian berisi 5 karya + slide kontak di akhir ===== -->
+  <section class="folio" id="portofolio" aria-labelledby="folio-title">
+    <div class="container">
+      <h2 class="folio-title" id="folio-title">Portofolio</h2>
 
-  <!-- Tiga slide terpisah, masing-masing 5 tempat yang bisa digeser. Isi dibaca otomatis dari foldernya di GitHub -->
-  <section class="slide k-foto" id="fotografi" data-folder="portfolio/foto" data-kind="Fotografi" data-noun="foto" data-type="img">
-    <div class="slide-head reveal"><div><span class="eyebrow">01</span><h3>Fotografi</h3><p>Momen dan cerita yang direkam lewat lensa.</p></div><div class="nav"><button type="button" data-dir="-1" aria-label="Geser ke kiri">&#8592;</button><button type="button" data-dir="1" aria-label="Geser ke kanan">&#8594;</button></div></div>
-    <div class="track reveal" tabindex="0" aria-label="Daftar karya, geser ke samping"></div>
-  </section>
+      <!-- DESAIN GRAFIS: portfolio/desain-1.jpg sampai desain-5.jpg -->
+      <div class="group">
+        <div class="group-top"><h3>Desain grafis</h3>
+          <div class="gt-right"><p class="count">5 karya</p><div class="nav"><button type="button" data-target="desain" data-dir="-1" aria-label="Geser Desain grafis ke kiri">&#8592;</button><button type="button" data-target="desain" data-dir="1" aria-label="Geser Desain grafis ke kanan">&#8594;</button></div></div></div>
+        <div class="track" id="desain" tabindex="0" aria-label="desain">
+          <figure class="item"><div class="media"><img src="portfolio/desain-1.jpg" alt="Desain 1" loading="lazy"></div><figcaption>Judul karya 1</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/desain-2.jpg" alt="Desain 2" loading="lazy"></div><figcaption>Judul karya 2</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/desain-3.jpg" alt="Desain 3" loading="lazy"></div><figcaption>Judul karya 3</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/desain-4.jpg" alt="Desain 4" loading="lazy"></div><figcaption>Judul karya 4</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/desain-5.jpg" alt="Desain 5" loading="lazy"></div><figcaption>Judul karya 5</figcaption></figure>
+        </div>
+      </div>
 
-  <section class="slide k-video" id="videografi" data-folder="portfolio/video" data-kind="Videografi" data-noun="video" data-type="vid">
-    <div class="slide-head reveal"><div><span class="eyebrow">02</span><h3>Videografi</h3><p>Cerita bergerak, dari pengambilan gambar sampai penyuntingan.</p></div><div class="nav"><button type="button" data-dir="-1" aria-label="Geser ke kiri">&#8592;</button><button type="button" data-dir="1" aria-label="Geser ke kanan">&#8594;</button></div></div>
-    <div class="track reveal" tabindex="0" aria-label="Daftar karya, geser ke samping"></div>
-  </section>
+      <!-- FOTOGRAFI: foto saja, portfolio/foto-1.jpg sampai foto-5.jpg -->
+      <div class="group">
+        <div class="group-top"><h3>Fotografi</h3>
+          <div class="gt-right"><p class="count">5 karya</p><div class="nav"><button type="button" data-target="foto" data-dir="-1" aria-label="Geser Fotografi ke kiri">&#8592;</button><button type="button" data-target="foto" data-dir="1" aria-label="Geser Fotografi ke kanan">&#8594;</button></div></div></div>
+        <div class="track" id="foto" tabindex="0" aria-label="foto">
+          <figure class="item"><div class="media"><img src="portfolio/foto-1.jpg" alt="Foto portofolio 1" loading="lazy"></div><figcaption>Foto 1</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/foto-2.jpg" alt="Foto portofolio 2" loading="lazy"></div><figcaption>Foto 2</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/foto-3.jpg" alt="Foto portofolio 3" loading="lazy"></div><figcaption>Foto 3</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/foto-4.jpg" alt="Foto portofolio 4" loading="lazy"></div><figcaption>Foto 4</figcaption></figure>
+          <figure class="item"><div class="media"><img src="portfolio/foto-5.jpg" alt="Foto portofolio 5" loading="lazy"></div><figcaption>Foto 5</figcaption></figure>
+        </div>
+      </div>
 
-  <section class="slide k-desain" id="desain" data-folder="portfolio/desain" data-kind="Desain grafis" data-noun="desain" data-type="img">
-    <div class="slide-head reveal"><div><span class="eyebrow">03</span><h3>Desain Grafis</h3><p>Poster, logo, dan identitas visual.</p></div><div class="nav"><button type="button" data-dir="-1" aria-label="Geser ke kiri">&#8592;</button><button type="button" data-dir="1" aria-label="Geser ke kanan">&#8594;</button></div></div>
-    <div class="track reveal" tabindex="0" aria-label="Daftar karya, geser ke samping"></div>
-  </section>
-
-  <section class="section" id="kontak">
-    <div class="reveal">
-      <span class="eyebrow">Kontak</span>
-      <h2 class="title">Mari bekerja sama.</h2>
+      <!-- VIDEOGRAFI: video saja, portfolio/video-1.mp4 sampai video-5.mp4 -->
+      <div class="group">
+        <div class="group-top"><h3>Videografi</h3>
+          <div class="gt-right"><p class="count">5 karya</p><div class="nav"><button type="button" data-target="video" data-dir="-1" aria-label="Geser Videografi ke kiri">&#8592;</button><button type="button" data-target="video" data-dir="1" aria-label="Geser Videografi ke kanan">&#8594;</button></div></div></div>
+        <div class="track" id="video" tabindex="0" aria-label="video">
+          <figure class="item wide"><div class="media wide"><video src="portfolio/video-1.mp4" controls preload="metadata" playsinline></video></div><figcaption>Video 1</figcaption></figure>
+          <figure class="item wide"><div class="media wide"><video src="portfolio/video-2.mp4" controls preload="metadata" playsinline></video></div><figcaption>Video 2</figcaption></figure>
+          <figure class="item wide"><div class="media wide"><video src="portfolio/video-3.mp4" controls preload="metadata" playsinline></video></div><figcaption>Video 3</figcaption></figure>
+          <figure class="item wide"><div class="media wide"><video src="portfolio/video-4.mp4" controls preload="metadata" playsinline></video></div><figcaption>Video 4</figcaption></figure>
+          <figure class="item wide"><div class="media wide"><video src="portfolio/video-5.mp4" controls preload="metadata" playsinline></video></div><figcaption>Video 5</figcaption></figure>
+        </div>
+      </div>
     </div>
-    <div class="contact reveal">
-      <a class="card" href="mailto:025241461167@mail.mmtc.ac.id"><small>Email</small><span>025241461167@mail.mmtc.ac.id</span></a>
-      <a class="card" href="https://web.whatsapp.com/" target="_blank" rel="noopener"><small>WhatsApp</small><span>0812-5847-5578</span></a>
-      <a class="card" href="https://www.instagram.com/" target="_blank" rel="noopener"><small>Instagram</small><span>@nafseo_m</span></a>
+  </section>
+
+  <!-- ===== HUBUNGI SAYA (bagian terakhir) ===== -->
+  <section class="reach" id="kontak" aria-labelledby="reach-title">
+    <div class="container">
+      <h2 class="reach-title" id="reach-title">Hubungi saya</h2>
+      <p class="reach-sub">Tertarik bekerja sama atau sekadar ingin menyapa? Hubungi lewat salah satu kanal ini.</p>
+      <div class="reach-list">
+        <a class="r-link" href="https://wa.me/6281258475578" target="_blank" rel="noopener"><small>WhatsApp</small><strong>+62 812 5847 5578</strong><span aria-hidden="true">&#8599;</span></a>
+        <a class="r-link" href="https://www.instagram.com/nafseo_3/" target="_blank" rel="noopener"><small>Instagram</small><strong>@nafseo_3</strong><span aria-hidden="true">&#8599;</span></a>
+        <a class="r-link" href="mailto:emailkamu@gmail.com"><small>Email</small><strong>nafseo736@gmail.com</strong><span aria-hidden="true">&#8599;</span></a>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <p>&copy; <span id="year"></span> Nafseo &middot; Muhammad Nafis &middot; <a id="wa" href="#" target="_blank" rel="noopener">Bagikan lewat WhatsApp</a></p>
+  <div class="container">© 2026 Nama Lengkap Kamu</div>
 </footer>
 
-<dialog id="viewer" aria-label="Tampilan diperbesar">
-  <button class="close" type="button" aria-label="Tutup">&times;</button>
-  <button class="vnav prev" type="button" aria-label="Sebelumnya">&#8592;</button>
-  <div id="viewer-body"></div>
-  <div id="viewer-cap"></div>
-  <button class="vnav next" type="button" aria-label="Berikutnya">&#8594;</button>
-</dialog>
+<dialog id="viewer"><img id="viewer-img" alt=""></dialog>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  document.documentElement.classList.add('js');
+  var url = location.href.split('#')[0];
+  var title = document.title;
+  var statusEl = document.getElementById('status');
 
-  /* Muncul halus saat di-scroll */
-  var rv = document.querySelectorAll('.reveal');
+  document.getElementById('wa').href =
+    'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url);
+
+  document.getElementById('share').addEventListener('click', function () {
+    if (navigator.share) {
+      navigator.share({ title: title, url: url }).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function () {
+        statusEl.textContent = 'Link disalin.';
+      }, function () {
+        statusEl.textContent = 'Salin link dari address bar.';
+      });
+    } else {
+      statusEl.textContent = 'Salin link dari address bar.';
+    }
+  });
+
+  /* Tombol geser portofolio: tiap klik pindah tepat satu slide dan terkunci di slide itu */
+  function slidePos(track, item) {
+    return item.getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
+  }
+  function currentIndex(track) {
+    var items = track.querySelectorAll('.item'), best = 0, dist = Infinity;
+    items.forEach(function (it, i) {
+      var d = Math.abs(slidePos(track, it) - track.scrollLeft);
+      if (d < dist) { dist = d; best = i; }
+    });
+    return best;
+  }
+  function updateNav(track) {
+    var max = track.scrollWidth - track.clientWidth - 2;
+    var btns = document.querySelectorAll('.nav button[data-target="' + track.id + '"]');
+    btns[0].disabled = track.scrollLeft <= 2;
+    btns[1].disabled = track.scrollLeft >= max;
+  }
+  document.querySelectorAll('.track').forEach(function (track) {
+    track.addEventListener('scroll', function () { updateNav(track); }, { passive: true });
+    updateNav(track);
+  });
+  document.querySelectorAll('.nav button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var track = document.getElementById(btn.dataset.target);
+      var items = track.querySelectorAll('.item');
+      var i = Math.max(0, Math.min(items.length - 1, currentIndex(track) + Number(btn.dataset.dir)));
+      track.scrollTo({ left: slidePos(track, items[i]), behavior: 'smooth' });
+    });
+  });
+
+  /* Perbesar foto */
+  var viewer = document.getElementById('viewer');
+  var viewerImg = document.getElementById('viewer-img');
+  document.querySelectorAll('.media img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      viewerImg.src = img.src; viewerImg.alt = img.alt; viewer.showModal();
+    });
+  });
+  viewer.addEventListener('click', function () { viewer.close(); });
+
+  /* Animasi muncul saat di-scroll */
+  var targets = document.querySelectorAll('.info .container > div, .folio-title, .group, .reach .container');
+  targets.forEach(function (el) { el.classList.add('reveal'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    rv.forEach(function (el) { io.observe(el); });
-  } else { rv.forEach(function (el) { el.classList.add('in'); }); }
-
-  /* Bagikan profil */
-  var url = location.href.split('#')[0], title = document.title, statusEl = document.getElementById('status');
-  document.getElementById('wa').href = 'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url);
-  document.getElementById('share').addEventListener('click', function () {
-    if (navigator.share) { navigator.share({ title: title, url: url }).catch(function () {}); }
-    else if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(function () { statusEl.textContent = 'Link disalin.'; },
-        function () { statusEl.textContent = 'Salin link dari address bar.'; });
-    } else { statusEl.textContent = 'Salin link dari address bar.'; }
-  });
-
-  /* Foto/video diklik: membesar dari posisinya lalu berada di tengah layar */
-  var viewer = document.getElementById('viewer'), vBody = document.getElementById('viewer-body'), vCap = document.getElementById('viewer-cap');
-  var vPrev = viewer.querySelector('.prev'), vNext = viewer.querySelector('.next');
-  var cur = { items: [], i: 0 };
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function enter(el, fromTile) {
-    if (reduce || !el.animate) return;
-    var fr = el.getBoundingClientRect();
-    if (fromTile && fr.width) {
-      var tr = fromTile.getBoundingClientRect();
-      var dx = tr.left + tr.width / 2 - (fr.left + fr.width / 2), dy = tr.top + tr.height / 2 - (fr.top + fr.height / 2);
-      var sc = tr.width / fr.width;
-      el.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sc + ')', opacity: .5 }, { transform: 'none', opacity: 1 }],
-                 { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' });
-    } else {
-      el.animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 250, easing: 'ease-out' });
-    }
-  }
-
-  function show(i, fromTile) {
-    var it = cur.items[i]; cur.i = i;
-    vBody.innerHTML = ''; vCap.innerHTML = '';
-    var el = document.createElement(it.isVideo ? 'video' : 'img');
-    el.src = it.src;
-    if (it.isVideo) { el.controls = true; el.autoplay = true; el.setAttribute('playsinline', ''); } else { el.alt = it.cap; }
-    vBody.appendChild(el);
-    vCap.appendChild(span('vcap-title', it.cap)); vCap.appendChild(span('vcap-sub', it.desc));
-    vPrev.hidden = vNext.hidden = cur.items.length < 2;
-    var done = false;
-    function go() { if (done) return; done = true; enter(el, fromTile); }
-    if (it.isVideo) el.addEventListener('loadedmetadata', go); else if (el.complete && el.naturalWidth) go(); else el.addEventListener('load', go);
-    setTimeout(go, 700);
-  }
-
-  function openViewer(items, i) { cur.items = items; viewer.showModal(); show(i, items[i].tile); }
-  function step(d) { show((cur.i + d + cur.items.length) % cur.items.length, null); }
-
-  vPrev.addEventListener('click', function () { step(-1); });
-  vNext.addEventListener('click', function () { step(1); });
-  viewer.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1);
-  });
-  viewer.addEventListener('click', function (e) {
-    if (e.target.closest('.close') || !e.target.closest('img, video, .vnav, #viewer-cap')) viewer.close();
-  });
-  viewer.addEventListener('close', function () {
-    vBody.innerHTML = '';
-    var t = cur.items[cur.i] && cur.items[cur.i].tile;
-    if (t && t.scrollIntoView) t.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
-  });
-
-  /* ===== Portofolio otomatis dari folder GitHub =====
-     portfolio/foto, portfolio/video, portfolio/desain
-     Keterangan kecil: namai file  "Judul--Keterangan.jpg"
-     SLOTS = jumlah tempat per slide. SHOW_EMPTY_SLOTS = tampilkan kotak kosong sampai terisi.
-     GH_USER / GH_REPO dikosongkan = terdeteksi otomatis dari alamat web. */
-  var GH_USER = '', GH_REPO = '';
-  var SLOTS = 5, SHOW_EMPTY_SLOTS = true;
-  var IMG = /\.(jpe?g|png|webp|gif|avif)$/i, VID = /\.(mp4|webm|mov|m4v)$/i;
-
-  function repoInfo() {
-    var host = location.hostname, user = GH_USER, repo = GH_REPO;
-    if (!user && /\.github\.io$/.test(host)) {
-      user = host.split('.')[0];
-      var seg = location.pathname.split('/')[1];
-      repo = repo || (seg ? seg : user + '.github.io');
-    }
-    return user && repo ? { user: user, repo: repo } : null;
-  }
-
-  function span(cls, text) { var s = document.createElement('span'); s.className = cls; s.textContent = text; return s; }
-
-  function render(track, files, sec) {
-    var folder = sec.dataset.folder, kind = sec.dataset.kind, noun = sec.dataset.noun;
-    var wanted = sec.dataset.type === 'vid' ? VID : IMG;   // slide video hanya video, lainnya hanya foto
-    track.innerHTML = '';
-    var list = files.filter(function (f) { return f.type === 'file' && wanted.test(f.name); })
-      .sort(function (a, b) { return a.name.localeCompare(b.name, undefined, { numeric: true }); });
-
-    var items = [];
-    list.forEach(function (f) {
-      var base = f.name.replace(/\.[^.]+$/, '').split('--');
-      var cap = base[0].replace(/[-_]+/g, ' ').trim(), desc = (base[1] || '').replace(/[-_]+/g, ' ').trim();
-      var src = folder + '/' + encodeURIComponent(f.name), isVideo = VID.test(f.name), el;
-      var tile = document.createElement('button');
-      tile.type = 'button'; tile.className = 'tile';
-      tile.setAttribute('aria-label', 'Buka ' + cap);
-      if (isVideo) {
-        el = document.createElement('video');
-        el.src = src + '#t=0.1'; el.preload = 'metadata'; el.muted = true; el.setAttribute('playsinline', '');
-        tile.appendChild(el); tile.appendChild(Object.assign(document.createElement('span'), { className: 'play' }));
-      } else {
-        el = document.createElement('img'); el.src = src; el.alt = cap; el.loading = 'lazy'; el.draggable = false; tile.appendChild(el);
-      }
-      var c = document.createElement('div'); c.className = 'cap';
-      c.appendChild(span('cap-title', cap)); c.appendChild(span('cap-sub', desc || kind));
-      tile.appendChild(c);
-      var idx = items.length;
-      items.push({ isVideo: isVideo, src: src, cap: cap, desc: desc || kind, tile: tile });
-      tile.addEventListener('click', function () { openViewer(items, idx); });
-      track.appendChild(tile);
-    });
-
-    if (SHOW_EMPTY_SLOTS) {
-      for (var n = list.length; n < SLOTS; n++) {
-        var slot = document.createElement('div');
-        slot.className = 'slot';
-        slot.innerHTML = '<div>Tempat ' + noun + ' ' + (n + 1) + '<small>' + folder + '</small></div>';
-        track.appendChild(slot);
-      }
-    }
-  }
-
-  document.querySelectorAll('.slide').forEach(function (sec) {
-    var track = sec.querySelector('.track'), info = repoInfo();
-
-    /* Tombol panah */
-    sec.querySelectorAll('.nav button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        track.scrollBy({ left: Number(b.dataset.dir) * track.clientWidth * 0.8, behavior: 'smooth' });
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    });
-
-    /* Geser dengan mouse (drag). Di HP cukup swipe */
-    var down = false, moved = false, startX = 0, startLeft = 0;
-    track.addEventListener('pointerdown', function (e) {
-      if (e.pointerType !== 'mouse' || e.button !== 0) return;
-      down = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
-    });
-    window.addEventListener('pointermove', function (e) {
-      if (!down) return;
-      var dx = e.clientX - startX;
-      if (!moved && Math.abs(dx) > 6) { moved = true; track.classList.add('dragging'); }
-      if (moved) track.scrollLeft = startLeft - dx;
-    });
-    window.addEventListener('pointerup', function () {
-      if (!down) return;
-      down = false; track.classList.remove('dragging');
-    });
-    track.addEventListener('click', function (e) {
-      if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; }
-    }, true);
-
-    render(track, [], sec);
-    if (!info) return;
-    fetch('https://api.github.com/repos/' + info.user + '/' + info.repo + '/contents/' + sec.dataset.folder)
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (files) { render(track, files, sec); })
-      .catch(function () {});
-  });
+    }, { threshold: 0.12 });
+    targets.forEach(function (el) { io.observe(el); });
+  } else {
+    targets.forEach(function (el) { el.classList.add('in'); });
+  }
 </script>
 </body>
 </html>
